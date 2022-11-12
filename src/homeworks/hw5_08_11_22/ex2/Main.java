@@ -19,12 +19,12 @@ public class Main {
 
         System.out.println();
 
-        System.out.println(student1.printInfo());
+        student1.printInfo();
         System.out.println(student1.getAverageMark());
 
         System.out.println();
 
-        System.out.println(student2.printInfo());
+        student2.printInfo();
         System.out.println(student2.getAverageMark());
     }
 }

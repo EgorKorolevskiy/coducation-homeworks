@@ -54,10 +54,11 @@ public class Student {
         return averageMark / countMarks;
     }
 
-    // почему только с булеан????
-    public boolean printInfo() {
-        System.out.println(nameStudent + " " + surnameStudent + " " + getSubjects() + " ");
-        return false;
+    public void printInfo() {
+        System.out.println("name student: " + nameStudent + "\n" + "surname student: " + surnameStudent);
+        for (Subject subject : subjects) {
+            System.out.println(subject.getNameSubject() + " " + subject.getMark());
+        }
     }
 
     @Override
