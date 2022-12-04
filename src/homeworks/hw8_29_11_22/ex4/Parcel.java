@@ -2,14 +2,14 @@ package homeworks.hw8_29_11_22.ex4;
 
 public class Parcel {
     // содержимое посылки
-    private String parcelName;
+    private final String PARCEL_NAME;
 
     public Parcel(String parcelName) {
-        this.parcelName = parcelName;
+        this.PARCEL_NAME = parcelName;
     }
 
     @Override
     public String toString() {
-        return parcelName;
+        return PARCEL_NAME;
     }
 }

@@ -4,21 +4,21 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Planet {
-    private PlanetName planetName;
-    private List<Parcel> deliveryParcel = new ArrayList<>();
+    private final PlanetName PLANET_NAME;
+    private final List<Parcel> DELIVERY_PARCEL = new ArrayList<>();
 
     public Planet(PlanetName planetName) {
-        this.planetName = planetName;
+        this.PLANET_NAME = planetName;
     }
 
-    public void addDeliveryParcel(String parcel) {
-        deliveryParcel.add(new Parcel(parcel));
+    public void addDeliveryParcel(Parcel parcel) {
+        DELIVERY_PARCEL.add(parcel);
     }
 
     public void printAllDeliveryParcels() {
-        System.out.println("Planet name: " + planetName);
+        System.out.println("Planet name: " + PLANET_NAME);
         System.out.println("Список доставленных посылок: ");
-        for (Parcel listParcel : deliveryParcel) {
+        for (Parcel listParcel : DELIVERY_PARCEL) {
             System.out.println(listParcel);
         }
         System.out.println();

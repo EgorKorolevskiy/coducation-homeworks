@@ -6,50 +6,50 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class PlanetService {
-    private List<Planet> listPlanet = new ArrayList<>();
-    private List<Parcel> listOfParcels = new ArrayList<>();
+    private final List<Planet> LIST_PLANET = new ArrayList<>();
+    private final List<Parcel> LIST_OF_PARCEL = new ArrayList<>();
 
     {
-        listOfParcels.add(new Parcel("Защитный костюм"));
-        listOfParcels.add(new Parcel("Кислородная маска"));
-        listOfParcels.add(new Parcel("Космический шаттл"));
-        listOfParcels.add(new Parcel("Детали для ремонта космо базы"));
-        listOfParcels.add(new Parcel("Пять тонн зерна"));
-        listOfParcels.add(new Parcel("Прыжковый двигатель"));
-        listOfParcels.add(new Parcel("Солнечные панели"));
-        listOfParcels.add(new Parcel("Генератор кислорода"));
+        LIST_OF_PARCEL.add(new Parcel("Защитный костюм"));
+        LIST_OF_PARCEL.add(new Parcel("Кислородная маска"));
+        LIST_OF_PARCEL.add(new Parcel("Космический шаттл"));
+        LIST_OF_PARCEL.add(new Parcel("Детали для ремонта космо базы"));
+        LIST_OF_PARCEL.add(new Parcel("Пять тонн зерна"));
+        LIST_OF_PARCEL.add(new Parcel("Прыжковый двигатель"));
+        LIST_OF_PARCEL.add(new Parcel("Солнечные панели"));
+        LIST_OF_PARCEL.add(new Parcel("Генератор кислорода"));
 
     }
 
+
     public void start() {
         System.out.println("Enter e for english or r for russian");
-        String answer = Input.next();
-
-        if (answer.equalsIgnoreCase("e")) {
-            PlanetName.isEnglish = true;
-        } else {
-            PlanetName.isEnglish = false;
-        }
-        for (int i = 0; i < listOfParcels.size(); i++) {
-            System.out.println("Капитан! У нас есть еще недоставленная посылка: " + listOfParcels.get(i) +
-                    "\nНа какую планету ее доставить?");
+        initLanguage();
+        for (int i = 0; i < LIST_OF_PARCEL.size(); i++) {
+            System.out.printf("Капитан! У нас есть еще недоставленная посылка: %s\nНа какую планету ее доставить?\n", LIST_OF_PARCEL.get(i));
             String userInput = Input.next();
             PlanetName certainPlanet = PlanetName.myValueOf(userInput);
             if (userInput != null) {
                 Planet planet = new Planet(certainPlanet);
-                planet.addDeliveryParcel(String.valueOf(listOfParcels.get(i)));
-                System.out.println("Посылка " + listOfParcels.get(i) + " отправлена на планету " + certainPlanet + "\n");
-                listPlanet.add(planet);
-                listOfParcels.remove(i--);
+                planet.addDeliveryParcel(LIST_OF_PARCEL.get(i));
+                System.out.printf("Посылка %s отправлена на планету %s\n", LIST_OF_PARCEL.get(i), certainPlanet);
+                LIST_PLANET.add(planet);
+                LIST_OF_PARCEL.remove(i--);
             }
         }
         System.out.println("Все посылки доставлены\n");
         showDeliveredParcelsByPlanet();
     }
 
-    public void showDeliveredParcelsByPlanet() {
+    private void initLanguage() {
+        String answer = Input.next();
+
+        PlanetName.isEnglish = answer.equalsIgnoreCase("e");
+    }
+
+    private void showDeliveredParcelsByPlanet() {
         System.out.println("------------Список доставленных посылок по планетам------------");
-        for (Planet planet : listPlanet) {
+        for (Planet planet : LIST_PLANET) {
             planet.printAllDeliveryParcels();
         }
     }

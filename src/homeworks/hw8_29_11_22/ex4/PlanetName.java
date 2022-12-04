@@ -4,30 +4,29 @@ public enum PlanetName {
     MERCURY("МЕРКУРИЙ"), VENUS("ВЕНЕРА"), EARTH("ЗЕМЛЯ"), MARS("МАРС"),
     JUPITER("ЮПИТЕР"), SATURN("САТУРН"), URANUS("УРАН"), NEPTUNE("НЕПТУН");
 
-    String psevdonim;
+    final String PSEVDONIM;
 
     static boolean isEnglish = true;
 
     PlanetName(String psevdonim) {
-        this.psevdonim = psevdonim;
+        this.PSEVDONIM = psevdonim;
     }
 
     public static PlanetName myValueOf(String planet) {
         PlanetName[] values = values();
         for (PlanetName planets : values) {
-            if (planets.name().equalsIgnoreCase(planet) || planets.psevdonim.equalsIgnoreCase(planet)) {
+            if (planets.name().equalsIgnoreCase(planet) || planets.PSEVDONIM.equalsIgnoreCase(planet)) {
                 return planets;
             }
         }
-        return null;
+        throw new RuntimeException("Неизвестная планета");
     }
 
     @Override
     public String toString() {
-        if(isEnglish) {
+        if (isEnglish) {
             return name();
-        } else {
-            return psevdonim;
         }
+        return PSEVDONIM;
     }
 }
