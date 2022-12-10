@@ -36,9 +36,9 @@ public class HumanPlayer extends Player {
     public void checkEmptyCell(int row, int col) {
         if (gameField[row][col] == Symbol.EMPTY) {
             gameField[row][col] = symbol;
-        } else {
-            System.out.println("Ячейка занята, повторите ход!");
-            makeStep();
+            return;
         }
+        System.out.println("Ячейка занята, повторите ход!");
+        makeStep();
     }
 }

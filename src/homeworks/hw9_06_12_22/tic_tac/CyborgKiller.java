@@ -14,9 +14,9 @@ public class CyborgKiller extends Player {
     public void makeStep() {
         if (Game.turn % 2 == 0) {
             makeStepX();
-        } else {
-            makeStepO();
+            return;
         }
+        makeStepO();
     }
 
     private void makeStepX() {
@@ -24,11 +24,11 @@ public class CyborgKiller extends Player {
         int col = rnd.nextInt(gameField.length);
         if (gameField[row][col] == Symbol.O) {
             aiCalculator(row, col);
-        } else {
-            System.out.println("Вражеская ячейка не найдена");
-            checkEmptyCell(row, col);
-            sleep();
+            return;
         }
+        System.out.println("Вражеская ячейка не найдена");
+        checkEmptyCell(row, col);
+        sleep();
     }
 
     private void makeStepO() {
@@ -36,11 +36,11 @@ public class CyborgKiller extends Player {
         int col = rnd.nextInt(gameField.length);
         if (gameField[row][col] == Symbol.X) {
             aiCalculator(row, col);
-        } else {
-            System.out.println("Вражеская ячейка не найдена");
-            checkEmptyCell(row, col);
-            sleep();
+            return;
         }
+        System.out.println("Вражеская ячейка не найдена");
+        checkEmptyCell(row, col);
+        sleep();
     }
 
 
@@ -51,14 +51,16 @@ public class CyborgKiller extends Player {
             System.out.println("Повезло хожу как обычный игрок!");
             checkEmptyCell(row, col);
             sleep();
-        } else if (cellKiller == 1) {
+            return;
+        }
+        if (cellKiller == 1) {
             checkEnemyCell(row, col);
             sleep();
-        } else {
-            System.out.println("Вражеская ячейка не найдена");
-            checkEmptyCell(row, col);
-            sleep();
+            return;
         }
+        System.out.println("Вражеская ячейка не найдена");
+        checkEmptyCell(row, col);
+        sleep();
     }
 
     @Override
@@ -66,11 +68,11 @@ public class CyborgKiller extends Player {
         if (gameField[row][col] == Symbol.EMPTY) {
             gameField[row][col] = symbol;
             System.out.println("Хожу на: " + row + " " + col);
-        } else {
-            int nextRow = rnd.nextInt(gameField.length);
-            int nextCol = rnd.nextInt(gameField.length);
-            checkEmptyCell(nextRow, nextCol);
+            return;
         }
+        int nextRow = rnd.nextInt(gameField.length);
+        int nextCol = rnd.nextInt(gameField.length);
+        checkEmptyCell(nextRow, nextCol);
     }
 
     private void checkEnemyCell(int row, int col) {
@@ -81,7 +83,6 @@ public class CyborgKiller extends Player {
     private void sleep() {
         try {
             Thread.sleep(1500);
-        } catch (Exception e) {
-        }
+        } catch (Exception e) {}
     }
 }

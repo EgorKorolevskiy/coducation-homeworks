@@ -37,9 +37,9 @@ public class Game {
                         "3. Компьютер VS Компьютер");
         int input = Input.nextInt();
         switch (input) {
-            case 1 -> personVsPerson();
-            case 2 -> personVsComputer();
-            case 3 -> computerVsComputer();
+            case 1 -> runGame(new HumanPlayer(gameField, Symbol.X), new HumanPlayer(gameField, Symbol.O));
+            case 2 -> runGame(new HumanPlayer(gameField, Symbol.X), new ComputerPlayer(gameField, Symbol.O));
+            case 3 -> runGame(new ComputerPlayer(gameField, Symbol.X), new ComputerPlayer(gameField, Symbol.O));
         }
     }
 
@@ -50,56 +50,11 @@ public class Game {
                         "3. Киборг-убийца VS Киборг-убийца\n");
         int input = Input.nextInt();
         switch (input) {
-            case 1 -> personVsCyborgKiller();
-            case 2 -> computerVsCyborgKiller();
-            case 3 -> cyborgKillerVsCyborgKiller();
+            case 1 -> runGame(new HumanPlayer(gameField, Symbol.X), new CyborgKiller(gameField, Symbol.O));
+            case 2 -> runGame(new ComputerPlayer(gameField, Symbol.X), new CyborgKiller(gameField, Symbol.O));
+            case 3 -> runGame(new CyborgKiller(gameField, Symbol.X), new CyborgKiller(gameField, Symbol.O));
         }
     }
-
-    // classicGame
-    private void personVsPerson() {
-        Player player1 = new HumanPlayer(gameField, Symbol.X);
-        Player player2 = new HumanPlayer(gameField, Symbol.O);
-
-        runGame(player1, player2);
-    }
-
-    private void personVsComputer() {
-        Player player1 = new HumanPlayer(gameField, Symbol.X);
-        Player player2 = new ComputerPlayer(gameField, Symbol.O);
-
-        runGame(player1, player2);
-    }
-
-    private void computerVsComputer() {
-        Player player1 = new ComputerPlayer(gameField, Symbol.X);
-        Player player2 = new ComputerPlayer(gameField, Symbol.O);
-
-        runGame(player1, player2);
-    }
-
-    //CyborgKiller game
-    private void personVsCyborgKiller() {
-        Player player1 = new HumanPlayer(gameField, Symbol.X);
-        Player player2 = new CyborgKiller(gameField, Symbol.O);
-
-        runGame(player1, player2);
-    }
-
-    private void computerVsCyborgKiller() {
-        Player player1 = new ComputerPlayer(gameField, Symbol.X);
-        Player player2 = new CyborgKiller(gameField, Symbol.O);
-
-        runGame(player1, player2);
-    }
-
-    private void cyborgKillerVsCyborgKiller() {
-        Player player1 = new CyborgKiller(gameField, Symbol.X);
-        Player player2 = new CyborgKiller(gameField, Symbol.O);
-
-        runGame(player1, player2);
-    }
-
 
     private void runGame(Player player1, Player player2) {
         Symbol winner;

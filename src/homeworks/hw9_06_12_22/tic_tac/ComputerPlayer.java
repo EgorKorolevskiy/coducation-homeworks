@@ -18,17 +18,18 @@ public class ComputerPlayer extends Player {
         checkEmptyCell(row, col);
         try {
             Thread.sleep(1500);
-        } catch (Exception e) {}
+        } catch (Exception e) {
+        }
     }
 
     @Override
     public void checkEmptyCell(int row, int col) {
         if (gameField[row][col] == Symbol.EMPTY) {
             gameField[row][col] = symbol;
-        } else {
-            int nextRow = rnd.nextInt(gameField.length);
-            int nextCol = rnd.nextInt(gameField.length);
-            checkEmptyCell(nextRow, nextCol);
+            return;
         }
+        int nextRow = rnd.nextInt(gameField.length);
+        int nextCol = rnd.nextInt(gameField.length);
+        checkEmptyCell(nextRow, nextCol);
     }
 }
