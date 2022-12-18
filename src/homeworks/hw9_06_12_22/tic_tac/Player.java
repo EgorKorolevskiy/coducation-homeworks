@@ -1,6 +1,6 @@
 package homeworks.hw9_06_12_22.tic_tac;
 
-public class Player {
+public abstract class Player {
     Symbol[][] gameField;
     Symbol symbol;
 
@@ -13,9 +13,7 @@ public class Player {
         return symbol;
     }
 
-    public void makeStep() {
-
-    }
+    public abstract void makeStep();
 
     public void checkEmptyCell(int row, int col) {
 

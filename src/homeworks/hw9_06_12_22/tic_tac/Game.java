@@ -123,6 +123,21 @@ public class Game {
         return null;
     }
 
+//    private Symbol checkHorizontalWinner() {
+//        for (int i = 0; i < gameField.length; i++) {
+//            int num = 0;
+//            for (int j = 0; j < gameField[i].length; j++) {
+//                if (gameField[i][0] != Symbol.EMPTY && gameField[i][0] == gameField[i][j]) {
+//                    num++;
+//                    if (num == 3) {
+//                        return gameField[i][0];
+//                    }
+//                }
+//            }
+//        }
+//        return null;
+//    }
+
     private Symbol checkVerticalWinner() {
         Symbol x = Symbol.X;
         Symbol o = Symbol.O;
@@ -144,6 +159,31 @@ public class Game {
         }
         return null;
     }
+
+//    private Simbol checkVerticalWinner() {
+//        for (int i = 0; i < gameField.length; i++) {
+//            int num = 0;
+//            int num1 = 0;
+//            for (int j = 0; j < gameField[i].length; j++) {
+//                if (gameField[j][i] != Simbol.EMPTY && gameField[j][i] == Simbol.X) {
+//                    num++;
+//                    if (num == 3) {
+//                        return Simbol.X;
+//                    }
+//                } else if (gameField[j][i] != Simbol.EMPTY && gameField[j][i] == Simbol.O) {
+//                    num1++;
+//                    if (num1 == 3) {
+//                        return Simbol.O;
+//                    }
+//                }
+//
+//            }
+//
+//        }
+//        return null;
+//    }
+
+
 
     private Symbol checkDiagonalWinner() {
         Symbol x = Symbol.X;
